@@ -13,7 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from employee.zkhealth import zk_health
+from employee.zkcloud import biometric_push_view
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import JsonResponse
@@ -42,7 +43,10 @@ urlpatterns = [
     ),
     path("i18n/", include("django.conf.urls.i18n")),
     path("health/", health_check),
+    path("zkhealth/", zk_health),
+    path("zkpush/", biometric_push_view),
 ]
 
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
